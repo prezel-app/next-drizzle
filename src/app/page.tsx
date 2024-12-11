@@ -11,6 +11,7 @@ async function getClapCount() {
     })) ?? { count: 0 };
     return count;
   } catch (error) {
+    console.error(error);
     return undefined;
   }
 }
