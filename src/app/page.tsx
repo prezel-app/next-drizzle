@@ -5,23 +5,29 @@ import { revalidatePath } from "next/cache";
 import Image from "next/image";
 
 async function getClapCount() {
-  const { count } = (await db.query.claps.findFirst({
-    where: eq(claps?.id, 0),
-  })) ?? { count: 0 };
-  return count;
+  try {
+    const { count } = (await db.query.claps.findFirst({
+      where: eq(claps?.id, 0),
+    })) ?? { count: 0 };
+    return count;
+  } catch (error) {
+    return undefined;
+  }
 }
 
 async function incrementClaps() {
   "use server";
   const current = await getClapCount();
-  await db
-    .insert(claps)
-    .values({ id: 0, count: current + 1 })
-    .onConflictDoUpdate({
-      target: claps.id,
-      set: { count: current + 1 },
-    });
-  revalidatePath("/");
+  if (current !== undefined) {
+    await db
+      .insert(claps)
+      .values({ id: 0, count: current + 1 })
+      .onConflictDoUpdate({
+        target: claps.id,
+        set: { count: current + 1 },
+      });
+    revalidatePath("/");
+  }
 }
 
 export default async function Home() {
@@ -67,7 +73,7 @@ export default async function Home() {
               />
             </button>
           </form>
-          <span>{clapCount} claps so far!</span>
+          {clapCount !== undefined && <span>{clapCount} claps so far!</span>}
         </div>
       </main>
       <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">
