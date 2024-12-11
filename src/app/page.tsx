@@ -6,7 +6,7 @@ import Image from "next/image";
 
 async function getClapCount() {
   try {
-    const { count } = (await db.query.claps.findFirst({
+    const { count } = (await db().query.claps.findFirst({
       where: eq(claps?.id, 0),
     })) ?? { count: 0 };
     return count;
@@ -20,7 +20,7 @@ async function incrementClaps() {
   "use server";
   const current = await getClapCount();
   if (current !== undefined) {
-    await db
+    await db()
       .insert(claps)
       .values({ id: 0, count: current + 1 })
       .onConflictDoUpdate({
