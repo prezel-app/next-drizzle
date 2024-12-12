@@ -37,12 +37,18 @@ export default async function Home() {
   return (
     <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
       <main className="row-start-2 flex flex-col items-center gap-8">
-        <img
+        {/* <img
           className="mx-auto"
           alt="Prezel logo"
           width={80}
           height={80}
           src="https://prezel.app/icon.svg"
+        /> */}
+        <img
+          className="dark:invert"
+          alt="Prezel logo"
+          width={200}
+          src="http://018294.xyz:3000/big-logo"
         />
         {/* <span>Prezel</span> */}
         {/* <p>This is an example based on Next.js + Drizzle</p> */}
@@ -53,7 +59,7 @@ export default async function Home() {
           </p>
           <p>
             All you have to do to use it is pointing to{" "}
-            <code className="rounded bg-blue-100 px-1 py-0.5 font-semibold dark:bg-white/[.06]">
+            <code className="rounded bg-gray-200 px-2 py-0.5 font-semibold dark:bg-white/[.06]">
               PREZEL_DB_URL
             </code>
           </p>
