@@ -48,23 +48,19 @@ export default async function Home() {
           className="dark:invert"
           alt="Prezel logo"
           width={200}
-          src="http://018294.xyz:3000/big-logo"
+          src="http://prezel.app/big-logo"
         />
         {/* <span>Prezel</span> */}
         {/* <p>This is an example based on Next.js + Drizzle</p> */}
-        <div className="rounded-lg border bg-gray-50 p-4 text-gray-600 dark:border-white/20 dark:bg-gray-900 dark:text-gray-400">
-          <p>
-            Every deployment in prezel comes with a Sqlite DB setup out of the
-            box.
-          </p>
-          <p>
-            All you have to do to use it is pointing to{" "}
-            <code className="rounded bg-gray-200 px-2 py-0.5 font-semibold dark:bg-white/[.06]">
-              PREZEL_DB_URL
-            </code>
-          </p>
+        <div className="max-w-screen-sm rounded-lg border bg-gray-50 p-4 text-gray-600 dark:border-white/20 dark:bg-gray-900 dark:text-gray-400">
+          Every deployment in prezel comes with an Sqlite DB and database
+          branching setup out of the box. All you have to do to use it is
+          pointing to{" "}
+          <code className="rounded bg-gray-200 px-2 py-0.5 font-semibold dark:bg-white/[.06]">
+            PREZEL_DB_URL
+          </code>
         </div>
-        <p>Want to see Prezel DB in action? Just clap it up below!</p>
+        <p>Want to see Prezel DB in action? Give us a clap below!</p>
         <div className="flex items-center gap-4">
           <form action={incrementClaps}>
             <button
@@ -101,7 +97,7 @@ export default async function Home() {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://github.com/ricopinazo/prezel/tree/main/examples"
+          href="https://github.com/prezel-app/prezel/tree/main/examples"
           target="_blank"
           rel="noopener noreferrer"
         >
